@@ -22,10 +22,6 @@ uv run python -m src.csv_profiler.cli data/sample.csv --preview
 ### Windows: set PYTHONPATH="src"
 uv run streamlit run app.py
 
-
-### Setup
-### Run CLI
-### Run GUI
 ### Output Files
 
 The CLI writes:
