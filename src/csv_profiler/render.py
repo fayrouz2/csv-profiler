@@ -1,22 +1,13 @@
 from __future__ import annotations
-
 from pathlib import Path
 import json
+from datetime import datetime
 
 def write_json(report, path):
     path=Path(path)
     with open(path, 'w') as f:
         json.dump(report, f)
-
-# def write_markdown(report, path):
-#     path=Path(path)
-#     with open(path, 'w') as f:
-#         for key, value in report.items():
-#             f.write(f"**{key}**: {value}\n\n")
-
-
-from datetime import datetime
-
+        
 def render_markdown(report: dict) -> str:
     lines: list[str] = []
 

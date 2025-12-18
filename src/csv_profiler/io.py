@@ -3,8 +3,6 @@ from __future__ import annotations
 from csv import DictReader
 from pathlib import Path
 
-
-#p = Path('C:/Users/Farah FH/bootcamp/csv-profiler/data/sample.csv')
 def read_csv_rows(p):
     p=Path(p)
 

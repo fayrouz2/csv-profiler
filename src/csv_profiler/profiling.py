@@ -1,22 +1,4 @@
 
-# def basic_profile(rows): #list[dict[str, str]]
-    
-#     columns = list(rows[0].keys())
-#     missing = {'name':0,'age':0,'city':0,'salary':0}
-#     for row in rows:
-
-#         for col in columns:
-#             if row[col]=="":
-#                 missing[col]+=1
-    
-#     row_count=len(rows)
-
-#     profile_dict={"rows":row_count, "columns": missing }
-    
-    
-#     return profile_dict
-
-
 def is_missing(value):
 
     if not value.strip() or value.strip().casefold() in({"null", "nan", "none", "na", "n/a"}) :
@@ -40,11 +22,8 @@ def infer_type(values):
             return "text"
     return "number"
 
-
-
 def column_values(rows, col):
     return [row.get(col,"") for row in rows]
-
 
 
 def numeric_stats(values) :
@@ -90,73 +69,6 @@ def text_stats(values: list[str], top_k: int = 5):
         "top": top[0]
     }
 
-#print(text_stats(["a", "a",'b',"z",""]))
-
-
-
-
-
-
-
-# def basic_profile(rows): #list[dict[str, str]]
-    
-
-#     columns = list(rows[0].keys())
-#     missing = {'name':0,'age':0,'city':0,'salary':0}
-#     for row in rows:
-
-#         for col in columns:
-#             if row[col]=="":
-#                 missing[col]+=1
-    
-#     row_count=len(rows)
-
-#     profile_dict={"source": ,
-#                    "rows":row_count,
-#                    "columns": missing }
-    
-    
-#     return profile_dict
-
-
-
-
-# def profile_rows(rows):
-
-#     columns = list(rows[0].keys())
-
-#     n_rows=len(rows)
-
-#     col_profiles=[]
-
-
-#     for col in columns:
-#         missing=0
-#         column_vals= []
-
-#         for row in rows:
-#             column_vals.append(row[col])
-#             if is_missing(row[col]):
-#                 missing+=1
-#         inferred=infer_type(column_vals)
-#         #if inferred =="number": stats
-
-#         unique=len(set(column_vals))-missing
-        
-
-#         col_profiles.append({ 
-#         "name": col,
-#         "type": inferred,
-#         "missing": missing, 
-#         "missing_pct": 100.0 * missing / n_rows if n_rows else 0.0,
-#         "unique": unique
-#         })
-
-#     profile_dict={"n_rows": n_rows ,
-#                   "n_cols": len(columns),
-#                   "columns" : col_profiles}
-#     return profile_dict
-
 
 
 from collections import Counter
@@ -184,6 +96,8 @@ def profile_rows(rows: list[dict[str, str]]) -> dict:
                 profile.update({"min": min(nums), "max": max(nums), "mean": sum(nums) / len(nums)})
         col_profiles.append(profile)
     return {"n_rows": n_rows, "n_cols": len(columns), "columns": col_profiles}
+
+
       
 
 
