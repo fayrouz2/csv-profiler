@@ -2,7 +2,7 @@ import streamlit as st
 import csv
 from io import StringIO
 from src.csv_profiler.profiling import profile_rows
-from csv_profiler.render import render_markdown
+from src.csv_profiler.render import render_markdown
 import json
 from pathlib import Path
 
@@ -21,12 +21,6 @@ uploaded = st.file_uploader("Upload a CSV", type=["csv"])
 if uploaded is not None:
     st.write("Filename:", uploaded.name)
     st.write("Size (bytes):", uploaded.size)
-
-
-
-
-
-
 
 
 if uploaded is not None:
@@ -59,15 +53,13 @@ if uploaded is not None:
             cols[0].metric("Rows", n_rows)
             cols[1].metric("Columns", n_cols)
 
-
-            report = profile_rows(rows)
-
             
             
             if "report" not in st.session_state:
+                report = profile_rows(rows)
                 st.session_state["report"] = report 
-        
-            #st.write(report["columns"])
+                
+
 
             md_text=render_markdown(report)
             json_text=json.dumps(report, indent=2, ensure_ascii=False)
