@@ -2,3 +2,4 @@
 __pychache__/
 outputs/
 .env
+src/csv_profiler/__pycache__
